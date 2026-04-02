@@ -89,5 +89,127 @@
     "sinks": [
       "SetResult"
     ]
+  },
+  {
+    "name": "Sensitive data flow to log",
+    "code": 7,
+    "description": "Sensitive credentials or data written to log",
+    "sources": [
+      "ActivityUserInput",
+      "AndroidxNavigationUserInput",
+      "ProviderUserInput",
+      "ReceiverUserInput",
+      "ServiceUserInput",
+      "IntentData"
+    ],
+    "sinks": [
+      "Logging"
+    ]
+  },
+  {
+    "name": "Insecure Deserialization",
+    "code": 8,
+    "description": "Data from untrusted source to insecure deserialization or arbitrary code execution",
+    "sources": [
+      "ActivityUserInput",
+      "AndroidxNavigationUserInput",
+      "ProviderUserInput",
+      "ReceiverUserInput",
+      "ServiceUserInput",
+      "IntentData",
+      "DeserializationCallback"
+    ],
+    "sinks": [
+      "FileResolver",
+      "Reflection",
+      "NativeCodeLoading"
+    ]
+  },
+  {
+    "name": "Hardcoded Secret Flow",
+    "code": 9,
+    "description": "Hardcoded strings flow to crypto primitives",
+    "sources": [
+      "StringResource"
+    ],
+    "sinks": [
+      "CryptoKey"
+    ]
+  },
+  {
+    "name": "Insecure Dynamic Loader",
+    "code": 10,
+    "description": "Dynamic loader using path from untrusted sources",
+    "sources": [
+      "ActivityUserInput",
+      "AndroidxNavigationUserInput",
+      "ProviderUserInput",
+      "ReceiverUserInput",
+      "ServiceUserInput",
+      "IntentData"
+    ],
+    "sinks": [
+      "NativeCodeLoading"
+    ]
+  },
+  {
+    "name": "Sensitive data over network",
+    "code": 11,
+    "description": "Sensitive data flowing over insecure or untrusted network sink",
+    "sources": [
+      "ActivityUserInput",
+      "AndroidxNavigationUserInput",
+      "ProviderUserInput",
+      "ReceiverUserInput",
+      "ServiceUserInput",
+      "IntentData",
+      "StringResource"
+    ],
+    "sinks": [
+      "NetworkSink"
+    ]
+  },
+  {
+    "name": "Intent Injection",
+    "code": 12,
+    "description": "Untrusted data to intent launcher",
+    "sources": [
+      "ActivityUserInput",
+      "AndroidxNavigationUserInput",
+      "ProviderUserInput",
+      "ReceiverUserInput",
+      "ServiceUserInput",
+      "IntentData"
+    ],
+    "sinks": [
+      "LaunchingComponent"
+    ]
+  },
+  {
+    "name": "Path Traversal in Provider",
+    "code": 13,
+    "description": "Provider user input flows into file resolver operations",
+    "sources": [
+      "ProviderUserInput"
+    ],
+    "sinks": [
+      "FileResolver"
+    ]
+  },
+  {
+    "name": "Arbitrary Code Execution via DEX library",
+    "code": 18,
+    "description": "DEX library loaded from untrusted source (e.g., SD card)",
+    "sources": [
+      "ExternalStorageSource",
+      "ActivityUserInput",
+      "ProviderUserInput",
+      "ReceiverUserInput",
+      "ServiceUserInput",
+      "IntentData"
+    ],
+    "sinks": [
+      "DynamicCodeLoading"
+    ]
   }
 ]

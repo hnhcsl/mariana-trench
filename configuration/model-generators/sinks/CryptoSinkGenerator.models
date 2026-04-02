@@ -1,0 +1,22 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljavax/crypto/spec/SecretKeySpec;",
+          "name": "<init>"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "CryptoKey",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    }
+  ]
+}

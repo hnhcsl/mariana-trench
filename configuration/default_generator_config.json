@@ -67,5 +67,29 @@
   },
   {
     "name": "WebViewSinkGenerator"
+  },
+  {
+    "name": "LoggingSinkGenerator"
+  },
+  {
+    "name": "CryptoSinkGenerator"
+  },
+  {
+    "name": "NetworkSinkGenerator"
+  },
+  {
+    "name": "NativeCodeSinkGenerator"
+  },
+  {
+    "name": "StringResourceSourceGenerator"
+  },
+  {
+    "name": "DeserializationSourceGenerator"
+  },
+  {
+    "name": "OVAA_Sink_Refinement"
+  },
+  {
+    "name": "OVAA_Source_Refinement"
   }
 ]

@@ -1,0 +1,76 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Loversecured/ovaa/network/LoginService;",
+          "name": "login"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NetworkSink",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Loversecured/ovaa/utils/FileUtils;",
+          "name": "deleteRecursive"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "FileResolver",
+            "port": "Argument(0)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/Context;",
+          "name": "createPackageContext"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "CodeExecution",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/ContextWrapper;",
+          "name": "createPackageContext"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "CodeExecution",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    }
+  ]
+}

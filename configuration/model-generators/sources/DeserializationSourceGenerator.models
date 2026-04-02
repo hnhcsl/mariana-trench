@@ -1,0 +1,49 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/io/ObjectInputStream;",
+          "name": "readObject"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "DeserializationCallback",
+            "port": "Return"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "name",
+          "pattern": "readString"
+        },
+        {
+          "constraint": "parent",
+          "inner": {
+            "constraint": "extends",
+            "inner": {
+              "constraint": "name",
+              "pattern": "Landroid/os/Parcel;"
+            }
+          }
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "DeserializationCallback",
+            "port": "Return"
+          }
+        ]
+      }
+    }
+  ]
+}

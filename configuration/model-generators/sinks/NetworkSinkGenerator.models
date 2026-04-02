@@ -1,0 +1,40 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/net/URL;",
+          "name": "openConnection"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NetworkSink",
+            "port": "Argument(0)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/net/URL;",
+          "name": "<init>"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NetworkSink",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    }
+  ]
+}

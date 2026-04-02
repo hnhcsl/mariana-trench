@@ -1,0 +1,12 @@
+[
+  {
+    "description": "Hardcoded AES Key in WeakCrypto",
+    "sources": [
+      {
+        "kind": "StringResource",
+        "port": "Field(Loversecured/ovaa/utils/WeakCrypto;->KEY:Ljava/lang/String;)"
+      }
+    ],
+    "pattern": "Loversecured/ovaa/utils/WeakCrypto;-><clinit>()V"
+  }
+]

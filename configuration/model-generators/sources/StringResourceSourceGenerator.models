@@ -1,0 +1,58 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/Context;",
+          "name": "getString"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "StringResource",
+            "port": "Return"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/ContextWrapper;",
+          "name": "getString"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "StringResource",
+            "port": "Return"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/res/Resources;",
+          "name": "getString"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "StringResource",
+            "port": "Return"
+          }
+        ]
+      }
+    }
+  ]
+}

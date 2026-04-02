@@ -1,0 +1,58 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/BroadcastReceiver;",
+          "name": "onReceive"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "ReceiverUserInput",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/content/pm/PackageManager;",
+          "name": "getInstalledPackages"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "InstalledApplicationsSource",
+            "port": "Return"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/os/Environment;",
+          "name": "getExternalStorageDirectory"
+        }
+      ],
+      "model": {
+        "sources": [
+          {
+            "kind": "ExternalStorageSource",
+            "port": "Return"
+          }
+        ]
+      }
+    }
+  ]
+}

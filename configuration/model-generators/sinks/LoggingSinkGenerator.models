@@ -1,0 +1,94 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/util/Log;",
+          "name": "d"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "Logging",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/util/Log;",
+          "name": "e"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "Logging",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/util/Log;",
+          "name": "i"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "Logging",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/util/Log;",
+          "name": "v"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "Logging",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Landroid/util/Log;",
+          "name": "w"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "Logging",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    }
+  ]
+}

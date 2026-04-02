@@ -1,0 +1,76 @@
+{
+  "model_generators": [
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/lang/System;",
+          "name": "loadLibrary"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NativeCodeLoading",
+            "port": "Argument(0)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/lang/System;",
+          "name": "load"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NativeCodeLoading",
+            "port": "Argument(0)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/lang/Runtime;",
+          "name": "loadLibrary"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NativeCodeLoading",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    },
+    {
+      "find": "methods",
+      "where": [
+        {
+          "constraint": "signature_match",
+          "parent": "Ljava/lang/Runtime;",
+          "name": "load"
+        }
+      ],
+      "model": {
+        "sinks": [
+          {
+            "kind": "NativeCodeLoading",
+            "port": "Argument(1)"
+          }
+        ]
+      }
+    }
+  ]
+}
