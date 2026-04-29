@@ -148,6 +148,7 @@ Options::Options(
       enable_cross_component_analysis_(enable_cross_component_analysis),
       export_origins_mode_(export_origins_mode),
       analysis_mode_(analysis_mode),
+      analysis_passes_({AnalysisPassKind::Taint}),
       propagate_across_arguments_(propagate_across_arguments),
       list_all_rules_(false),
       list_all_model_generators_(false),
@@ -342,6 +343,7 @@ Options::Options(const Json::Value& json) {
 
   job_id_ = JsonValidation::optional_string(json, "job-id");
   metarun_id_ = JsonValidation::optional_string(json, "metarun-id");
+  commit_hash_ = JsonValidation::optional_string(json, "commit-hash");
 
   enable_cross_component_analysis_ = JsonValidation::optional_boolean(
       json, "enable-cross-component-analysis", false);
@@ -354,8 +356,24 @@ Options::Options(const Json::Value& json) {
   analysis_mode_ = analysis_mode_from_string(
       JsonValidation::string_or_default(json, "analysis-mode", "normal"));
 
+  // Parse analysis passes. Default to just taint analysis.
+  if (json.isMember("analysis-passes")) {
+    for (const auto& value :
+         JsonValidation::nonempty_array(json, "analysis-passes")) {
+      analysis_passes_.push_back(
+          analysis_pass_kind_from_string(JsonValidation::string(value)));
+    }
+  } else {
+    analysis_passes_ = {AnalysisPassKind::Taint};
+  }
+
   propagate_across_arguments_ = JsonValidation::optional_boolean(
       json, "propagate-across-arguments", false);
+
+  if (json.isMember("max-local-flow-structure-depth")) {
+    max_local_flow_structure_depth_ =
+        JsonValidation::integer(json, "max-local-flow-structure-depth");
+  }
 
   if (json.isMember("heuristics")) {
     heuristics_path_ = std::filesystem::path(
@@ -638,6 +656,10 @@ const std::optional<std::string>& Options::metarun_id() const {
   return metarun_id_;
 }
 
+const std::optional<std::string>& Options::commit_hash() const {
+  return commit_hash_;
+}
+
 bool Options::enable_cross_component_analysis() const {
   return enable_cross_component_analysis_;
 }
@@ -648,6 +670,18 @@ ExportOriginsMode Options::export_origins_mode() const {
 
 AnalysisMode Options::analysis_mode() const {
   return analysis_mode_;
+}
+
+const std::vector<AnalysisPassKind>& Options::analysis_passes() const {
+  return analysis_passes_;
+}
+
+const std::filesystem::path Options::local_flow_output_path() const {
+  return output_directory_;
+}
+
+int Options::max_local_flow_structure_depth() const {
+  return max_local_flow_structure_depth_;
 }
 
 bool Options::propagate_across_arguments() const {

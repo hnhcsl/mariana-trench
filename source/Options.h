@@ -16,6 +16,7 @@
 #include <json/json.h>
 
 #include <mariana-trench/AnalysisMode.h>
+#include <mariana-trench/AnalysisPass.h>
 #include <mariana-trench/ExportOriginsMode.h>
 #include <mariana-trench/Heuristics.h>
 #include <mariana-trench/IncludeMacros.h>
@@ -96,6 +97,9 @@ class Options final {
   const std::filesystem::path file_coverage_output_path() const;
   const std::filesystem::path rule_coverage_output_path() const;
   const std::filesystem::path verification_output_path() const;
+  const std::filesystem::path local_flow_output_path() const;
+
+  int max_local_flow_structure_depth() const;
 
   const std::optional<std::filesystem::path> sharded_models_directory() const;
   const std::optional<std::filesystem::path> overrides_input_path() const;
@@ -131,6 +135,7 @@ class Options final {
 
   const std::optional<std::string>& job_id() const;
   const std::optional<std::string>& metarun_id() const;
+  const std::optional<std::string>& commit_hash() const;
 
   bool enable_cross_component_analysis() const;
   ExportOriginsMode export_origins_mode() const;
@@ -139,6 +144,8 @@ class Options final {
 
   const std::optional<std::filesystem::path> heuristics_path() const;
   const std::optional<std::string>& graphql_metadata_path() const;
+
+  const std::vector<AnalysisPassKind>& analysis_passes() const;
 
   // Listing command flags
   bool list_all_rules() const;
@@ -204,11 +211,15 @@ class Options final {
 
   std::optional<std::string> job_id_;
   std::optional<std::string> metarun_id_;
+  std::optional<std::string> commit_hash_;
 
   bool enable_cross_component_analysis_;
   ExportOriginsMode export_origins_mode_;
   AnalysisMode analysis_mode_;
+  std::vector<AnalysisPassKind> analysis_passes_;
   bool propagate_across_arguments_;
+
+  int max_local_flow_structure_depth_ = 5;
 
   std::optional<std::filesystem::path> heuristics_path_;
   std::optional<std::string> graphql_metadata_path_;

@@ -1,0 +1,31 @@
+{
+  "metadata" :
+  {
+    "@generated" : true
+  },
+  "results" :
+  [
+    {
+      "callable" : "LConsts;||test_int:()I",
+      "callable_line" : 0,
+      "code" : 20000,
+      "localflow" :
+      {
+        "flows" :
+        [
+          {
+            "labels" :
+            [
+              "ContraProject:C<42>",
+              "Inject:result"
+            ],
+            "left" : "C<42>",
+            "right" : "G{LConsts;||test_int:()I}"
+          }
+        ],
+        "node" : "G{LConsts;||test_int:()I}"
+      },
+      "path" : "Consts.java"
+    }
+  ]
+}
